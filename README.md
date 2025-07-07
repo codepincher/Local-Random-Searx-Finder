@@ -8,7 +8,7 @@ A fork of [rndm-searx](https://github.com/ktleary/random-searx) with the ability
 
 1. Check [rndm-searx](https://github.com/ktleary/random-searx), as most of it is a direct copy.
 
-2. Appends a `?q={searchterm}` to the resulant instance.
+2. Appends a `?q={searchterm}` to the resulant instance, if necessary.
 
 ## HTML Installation
 
