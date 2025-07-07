@@ -1,28 +1,20 @@
-# rndm_searx
+# Local Random SearX
 
-A simple script to query a searx api monitor stats for instance health and redirect to a healthy site. This helps redistribute the load and narrows down choices from a long list.
+A fork of [rndm-searx](https://github.com/ktleary/random-searx) with the ability to use search terms. I also have a version where you can do this using `?q=%s` but due to limitations with firefox I abandoned it. Let me know if you're interested.
 
 ![random searx screen](random-searx.png)
 
-
-In the wild: https://stringtalk.org/searx
-
 ## How it works:
 
-1. Parses the api response and checks for a grade of B
-   or higher.
+1. Check [rndm-searx](https://github.com/ktleary/random-searx), as most of it is a direct copy.
 
-2. Select and print a random instance from the good instances.
+2. Appends a `?q={searchterm}` to the resulant instance.
 
 ## HTML Installation
 
--  copy index.html and rndm-search.js in a location capable of supporting ajax
+1. copy index.html and rndm-search.js in a location capable of supporting ajax
+- they should be in the same folder
 
-## Node
+(OPTIONAL):
 
-This started out as a node script which is also available in the nodejs folder.
-
-### Dependencies
-
-1. axios
-2. user-agents
+2. Include a favicon of your choice inside the same folder and rename it `favicon-searx.jpeg`.
