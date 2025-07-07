@@ -29,19 +29,27 @@ function getGoodSearchxInstances(instances) {
 	}, []);
 }
 
-function processInstances(instances) {
+function processInstances(instances, searchTerms) {
 	const goodSearchxInstances = getGoodSearchxInstances(instances);
 	goodSearchxInstances.forEach((instance) => console.log(instance));
-	document.location.href = getRandomListItem(goodSearchxInstances);
+	let redirectURL = getRandomListItem(goodSearchxInstances);
+	
+	if (searchTerms) {  
+	  redirectURL += `?q=${searchTerms}`;  
+	}
+	    
+	document.location.href = redirectURL;
+	
+	// document.location.href = getRandomListItem(goodSearchxInstances);
 	// print(getRandomListItem(goodSearchxInstances));
 }
 
-function redirectRandomSearx() {
+function redirectRandomSearx(searchTerms) {
 	fetch(searchxInstancesPage)
 		.then((response) => response.json())
 		.then((data) => {
 			const { instances } = data;
-			processInstances(instances);
+			processInstances(instances, searchTerms);
 		})
 		.catch((err) => {
 			let { name, message } = err;

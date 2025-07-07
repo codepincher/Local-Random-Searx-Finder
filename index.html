@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>random searx</title>
+    <title>Local Random Searx Finder</title>
+    <link rel="icon" type="image/png" href="./favicon-searx.jpeg">
     <meta
       name="viewport"
-      description="Redirect to a random working searX instance."
+      description="Redirects to a random SearX instance with the ability to use search terms."
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <script type="text/javascript" src="./rndm-search.js"></script>
@@ -15,24 +16,42 @@
         background: #1b1b1b;
         color: rgba(255, 255, 255, 0.66);
         font-family: sans-serif;
-        width: 300px;
+        width: 500px;
         margin: auto;
+	text-align: center;
       }
-      .title{
+      .title {
         font-size: 32px;
       }
-      #display{
+      #display {
         font-size: 18px;
+        display: none; /* Initially hide the display paragraph */
       }
-
       .ascii-art {
         font-family: monospace;
         white-space: pre;
       }
+      #searchInput {
+       width: 98%;
+       margin-bottom: 5px;
+       padding: 5px;
+       display: block;
+     }
+     #searchButton {
+       width: 100%;
+       box-sizing: border-box;
+     }
     </style>
   </head>
   <body>
-    <p class="title">Random Searx</p>
+    <p class="title">Local Random Searx Finder</p>
+    <p id="prompt">Please enter search terms:</p>
+    
+    <form id="searchForm" onsubmit="handleSearch(event)">
+      <input type="text" id="searchInput" placeholder="Ex: skibidi toilet" />
+      <button type="submit">Search</button>
+    </form>
+
     <p id="display">redirecting to an active instance ...</p>
     <p class="ascii-art">
                            .
@@ -53,9 +72,14 @@
                     '-'-'
 
     </p>
-    
+
     <script type="text/javascript">
-      redirectRandomSearx();
+      function handleSearch(event) {
+        event.preventDefault();
+        const searchTerms = document.getElementById('searchInput').value;
+        document.getElementById('display').style.display = 'block';
+        redirectRandomSearx(searchTerms);
+      }
     </script>
   </body>
 </html>
